@@ -15,7 +15,6 @@
         .fantasy-font {
             font-family: 'Lalezar', cursive;
         }
-    <style>
         @keyframes pulse {
             0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.7); }
             50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(236, 72, 153, 0); }
@@ -50,6 +49,15 @@
         .emoji-bounce {
             animation: bounce 0.8s;
         }
+
+
+        #ads-card {
+           overflow-y: auto;   /* فعال کردن اسکرول عمودی */
+           max-height: 650px;  /* ارتفاع محدود برای فعال شدن اسکرول */
+           -webkit-overflow-scrolling: touch; /* اسکرول نرم در موبایل */
+}
+
+
         
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
@@ -175,16 +183,16 @@
             <div class="bg-gray-800 bg-opacity-50 rounded-xl p-4 mb-3">
                 <p class="text-sm text-center">برای دریافت سکه بیشتر روی تبلیغات کلیک کنید</p>
             </div>
+            <div id="pos-article-display-card-108706"></div>
+            <div id="pos-article-text-card-108709"></div>
             <div id="pos-article-text-108701" class="bg-yellow-100 text-black p-4 rounded-lg"></div>
             <div id="pos-article-text-108702" class="bg-yellow-200 text-black p-4 rounded-lg"></div>
-            <div id="pos-article-display-108705"></div>
             <div id="pos-article-text-108704" class="bg-yellow-300 text-black p-4 rounded-lg"></div>
-            <div id="pos-article-display-card-108706"></div>
+            <div id="pos-article-text-108708" class="bg-yellow-400 text-black p-4 rounded-lg"></div>
             <button id="watch-ad" class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-black fantasy-font py-2 rounded-full">
             روی تبلیغات کلیک کنید</button>
         </div>
     </div>
-
     <script>
         // Data for predictions
         const predictions = {
