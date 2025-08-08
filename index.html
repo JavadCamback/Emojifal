@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ایموجیفال | فال روزانه با ایموجی</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts.css" rel="stylesheet">
+    <style>
+        .fantasy-font {
+            font-family: 'Lalezar', cursive;
+        }
+    <style>
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(236, 72, 153, 0); }
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .emoji-card {
+            transition: all 0.3s ease;
+        }
+        
+        .emoji-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .neon-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .emoji-bounce {
+            animation: bounce 0.8s;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="font-vazir bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 min-h-screen text-white">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-rose-400">
+                ایموجیفال
+            </h1>
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <div class="flex items-center bg-black bg-opacity-30 rounded-full px-4 py-2 fantasy-font">
+                    <svg class="w-5 h-5 ml-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#F59E0B" stroke="#F59E0B" stroke-width="2"/>
+                        <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#FCD34D" stroke="#FCD34D" stroke-width="2"/>
+                        <path d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z" fill="#FEF3C7" stroke="#FEF3C7" stroke-width="2"/>
+                    </svg>
+                    <span id="coins" class="font-bold">3</span>
+                </div>
+                <button id="theme-toggle" class="bg-gray-800 bg-opacity-50 p-2 rounded-full">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </div>
+        </header>
+        
+        <main class="mb-20">
+            <!-- Main Button -->
+            <div class="flex justify-center mb-8">
+                <div class="relative w-64 h-64 flex items-center justify-center">
+                    <div id="main-circle" class="neon-pulse w-full h-full rounded-full bg-gradient-to-br from-pink-600 via-rose-500 to-red-500 flex items-center justify-center cursor-pointer">
+                        <div class="w-56 h-56 rounded-full bg-purple-900 bg-opacity-70 flex items-center justify-center shadow-xl">
+                            <p id="main-button-text" class="text-6xl">فال بگیر</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Prediction Cards -->
+            <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 opacity-0 transition-opacity duration-500">
+                <div class="emoji-card glassmorphism rounded-2xl p-6">
+                    <h3 class="text-xl font-bold mb-4 text-rose-400">عشق و روابط</h3>
+                    <div class="flex justify-center text-5xl mb-4">💘</div>
+                    <p id="love-prediction" class="text-center leading-relaxed">برای دیدن فال عشق خود دکمه مرکزی را فشار دهید</p>
+                </div>
+                
+                <div class="emoji-card glassmorphism rounded-2xl p-6">
+                    <h3 class="text-xl font-bold mb-4 text-emerald-400">سلامتی</h3>
+                    <div class="flex justify-center text-5xl mb-4">🌿</div>
+                    <p id="health-prediction" class="text-center leading-relaxed">برای دیدن فال سلامتی خود دکمه مرکزی را فشار دهید</p>
+                </div>
+                
+                <div class="emoji-card glassmorphism rounded-2xl p-6">
+                    <h3 class="text-xl font-bold mb-4 text-amber-400">ثروت</h3>
+                    <div class="flex justify-center text-5xl mb-4">💰</div>
+                    <p id="wealth-prediction" class="text-center leading-relaxed">برای دیدن فال مالی خود دکمه مرکزی را فشار دهید</p>
+                </div>
+                
+                <div class="emoji-card glassmorphism rounded-2xl p-6">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-400">رمز و راز</h3>
+                    <div class="flex justify-center text-5xl mb-4">🔮</div>
+                    <p id="mystery-prediction" class="text-center leading-relaxed">برای دیدن راز آینده خود دکمه مرکزی را فشار دهید</p>
+                </div>
+            </div>
+            
+            <!-- History Section -->
+            <div id="history-section" class="hidden glassmorphism rounded-2xl p-6 mb-8">
+                <h2 class="fantasy-font text-2xl mb-4 text-center text-purple-400">تاریخچه فال‌های شما</h2>
+                <div id="history-list" class="space-y-4">
+                    <!-- History items will be added here -->
+                </div>
+            </div>
+            
+            <!-- Ad Placeholder -->
+            <div class="glassmorphism rounded-2xl p-4 mb-8 text-center bg-gray-800 bg-opacity-50">
+                <p class="mb-2">برای دریافت سکه بیشتر تبلیغات را تماشا کنید</p>
+                <button id="watch-ad" class="bg-gradient-to-r from-amber-500 to-yellow-500 text-black font-bold px-6 py-2 rounded-full">
+                    تماشای تبلیغ (+1 سکه)
+                </button>
+            </div>
+        </main>
+        
+        <!-- Bottom Toolbar Sections -->
+        <div class="fixed bottom-0 left-0 right-0 bg-gray-900 bg-opacity-90 backdrop-filter backdrop-blur-lg">
+            <div class="grid grid-cols-3 h-16">
+                <!-- Ads Section -->
+                <div id="ads-section" class="flex flex-col items-center justify-center p-2 border-l border-gray-700">
+                    <span class="text-xl">📢</span>
+                    <span class="fantasy-font text-xs">تبلیغات</span>
+                </div>
+                
+                <!-- History Section (Center) -->
+                <div id="history-section-btn" class="flex flex-col items-center justify-center p-2 border-l border-r border-gray-700">
+                    <span class="text-xl">📜</span>
+                    <span class="fantasy-font text-xs">تاریخچه</span>
+                </div>
+                
+                <!-- Support Section -->
+                <div id="support-section" class="flex flex-col items-center justify-center p-2">
+                    <span class="text-xl">💌</span>
+                    <span class="fantasy-font text-xs">پشتیبانی</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Support Card (Hidden by default) -->
+        <div id="support-card" class="fixed bottom-16 left-4 right-4 glassmorphism rounded-2xl p-4 hidden">
+            <h3 class="fantasy-font text-lg mb-2 text-center text-pink-400">درباره ایموجیفال</h3>
+            <p class="text-sm mb-4 text-center">اپلیکیشن فال روزانه با ایموجی‌های جذاب و پیشگویی‌های سرگرم کننده</p>
+            <button class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white fantasy-font py-2 rounded-full">
+                تماس با پشتیبانی
+            </button>
+        </div>
+
+        <!-- Ads Card (Hidden by default) -->
+        <div id="ads-card" class="fixed bottom-16 left-4 right-4 glassmorphism rounded-2xl p-4 hidden">
+            <h3 class="fantasy-font text-lg mb-2 text-center text-amber-400">تبلیغات</h3>
+            <div class="bg-gray-800 bg-opacity-50 rounded-xl p-4 mb-3">
+                <p class="text-sm text-center">برای دریافت سکه بیشتر تبلیغات را تماشا کنید</p>
+            </div>
+            <button id="watch-ad" class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-black fantasy-font py-2 rounded-full">
+                تماشای تبلیغ (+1 سکه)
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Data for predictions
+        const predictions = {
+            love: [
+                "عشق واقعی به زودی به زندگی شما وارد خواهد شد! قلب شما آماده دریافت انرژی‌های مثبت است.",
+                "در روابط عاطفی خود صبور باشید. بهترین چیزها برای کسانی اتفاق می‌افتد که منتظر می‌مانند.",
+                "امروز روز خوبی برای برقراری ارتباط با کسی است که مدتهاست دوستش دارید.",
+                "احساسات خود را پنهان نکنید. امروز روز بیان احساسات است!",
+                "اگر تنها هستید، نگران نباشید. کسی وجود دارد که در راه است و شما را بسیار دوست خواهد داشت."
+            ],
+            health: [
+                "سلامتی شما در وضعیت خوبی قرار دارد، اما به یاد داشته باشید که همیشه نیاز به مراقبت دارد.",
+                "تنش‌های روحی خود را مدیریت کنید. مدیتیشن می‌تواند برای شما مفید باشد.",
+                "امروز روز خوبی برای شروع یک رژیم غذایی سالم یا برنامه ورزشی است.",
+                "به بدن خود گوش دهید. استراحت کافی داشته باشید و آب فراوان بنوشید.",
+                "اگر اخیراً احساس خستگی می‌کنید، وقت آن است که کمی از خود مراقبت بیشتری کنید."
+            ],
+            wealth: [
+                "پول در راه است! آماده دریافت فرصت‌های مالی جدید باشید.",
+                "در سرمایه‌گذاری‌های خود محتاط باشید. تحقیق کنید قبل از هر تصمیم مالی.",
+                "امروز روز خوبی برای مذاکره بر سر افزایش حقوق یا شروع یک کسب و کار جانبی است.",
+                "هزینه‌های غیرضروری خود را کاهش دهید تا بتوانید پس‌انداز بیشتری داشته باشید.",
+                "یک فرصت مالی غیرمنتظره به زودی برای شما پیش خواهد آمد. آماده باشید!"
+            ],
+            mystery: [
+                "به زودی یک پیام مهم دریافت خواهید کرد که می‌تواند زندگی شما را تغییر دهد.",
+                "کسی که مدتهاست او را ندیده‌اید به زودی به زندگی شما باز خواهد گشت.",
+                "رازی که مدتهاست پنهان کرده‌اید به زودی آشکار خواهد شد. آماده باشید!",
+                "مسافرت غیرمنتظره‌ای در آینده نزدیک برای شما اتفاق خواهد افتاد.",
+                "یک تغییر بزرگ در راه است. خود را برای فصل جدیدی از زندگی آماده کنید."
+            ]
+        };
+
+        // Data for emoji combinations
+        const emojiCombinations = [
+            ["💖", "🌹", "👫"],
+            ["💘", "🌸", "😘"],
+            ["❤️", "💑", "💍"],
+            ["💕", "🌈", "🥰"],
+            ["💝", "🌼", "😍"],
+            ["🧠", "💪", "🛌"],
+            ["🏋️", "🥗", "💊"],
+            ["🧘", "🍏", "💓"],
+            ["🚴", "🥦", "🩺"],
+            ["🏃", "🥒", "💆"],
+            ["💰", "💎", "🏦"],
+            ["💵", "💳", "📈"],
+            ["💲", "🏠", "🪙"],
+            ["💱", "📊", "💹"],
+            ["🤑", "💷", "💸"],
+            ["🔮", "✨", "🌠"],
+            ["🎱", "🧿", "👁️"],
+            ["🌙", "🌟", "🌀"],
+            ["💫", "🌌", "♾️"],
+            ["☄️", "🌛", "🕉️"]
+        ];
+
+        // DOM Elements
+        const mainButton = document.getElementById('main-circle');
+        const mainButtonText = document.getElementById('main-button-text');
+        const cardsContainer = document.getElementById('cards-container');
+        const lovePrediction = document.getElementById('love-prediction');
+        const healthPrediction = document.getElementById('health-prediction');
+        const wealthPrediction = document.getElementById('wealth-prediction');
+        const mysteryPrediction = document.getElementById('mystery-prediction');
+        const coinsDisplay = document.getElementById('coins');
+        const historySection = document.getElementById('history-section');
+        const historyList = document.getElementById('history-list');
+        const watchAdBtn = document.getElementById('watch-ad');
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const historyBtn = document.getElementById('history-btn');
+        const homeBtn = document.getElementById('home-btn');
+        const fortuneBtn = document.getElementById('fortune-btn');
+
+        // App State
+        let coins = parseInt(localStorage.getItem('emojiFalCoins')) || 3;
+        let dailyFortuneAvailable = localStorage.getItem('emojiFalDailyAvailable') !== 'false';
+        let history = JSON.parse(localStorage.getItem('emojiFalHistory')) || [];
+        let darkMode = localStorage.getItem('emojiFalDarkMode') !== 'false';
+        let adCoinsToday = parseInt(localStorage.getItem('emojiFalAdCoinsToday')) || 0;
+        const today = new Date().toDateString();
+
+        // Initialize
+        updateCoinsDisplay();
+        applyTheme();
+        renderHistory();
+        checkDailyFortune();
+
+        // Event Listeners
+        mainButton.addEventListener('click', generateFortune);
+        watchAdBtn.addEventListener('click', watchAd);
+        themeToggle.addEventListener('click', toggleTheme);
+        
+        // New toolbar section handlers
+        document.getElementById('history-section-btn').addEventListener('click', () => {
+            document.getElementById('support-card').classList.add('hidden');
+            document.getElementById('ads-card').classList.add('hidden');
+            showHistory();
+        });
+        
+        document.getElementById('support-section').addEventListener('click', () => {
+            document.getElementById('support-card').classList.toggle('hidden');
+            document.getElementById('ads-card').classList.add('hidden');
+            showHome();
+        });
+        
+        document.getElementById('ads-section').addEventListener('click', () => {
+            document.getElementById('ads-card').classList.toggle('hidden');
+            document.getElementById('support-card').classList.add('hidden');
+            showHome();
+        });
+
+        // Functions
+        function checkDailyFortune() {
+            const lastFortuneDate = localStorage.getItem('emojiFalLastFortuneDate');
+            const lastAdDate = localStorage.getItem('emojiFalLastAdDate');
+            
+            if (lastFortuneDate !== today) {
+                dailyFortuneAvailable = true;
+                localStorage.setItem('emojiFalDailyAvailable', 'true');
+                localStorage.setItem('emojiFalLastFortuneDate', today);
+            }
+            
+            if (lastAdDate !== today) {
+                adCoinsToday = 0;
+                localStorage.setItem('emojiFalAdCoinsToday', '0');
+                localStorage.setItem('emojiFalLastAdDate', today);
+            }
+        }
+
+        function generateFortune() {
+            if (coins < 3 && !dailyFortuneAvailable) {
+                alert("برای گرفتن فال حداقل ۳ سکه نیاز دارید! برای دریافت سکه بیشتر تبلیغات را تماشا کنید.");
+                return;
+            }
+
+            if (dailyFortuneAvailable) {
+                dailyFortuneAvailable = false;
+                localStorage.setItem('emojiFalDailyAvailable', 'false');
+            } else {
+                if (coins < 3) {
+                    alert("سکه کافی ندارید! برای دریافت سکه بیشتر تبلیغات را تماشا کنید.");
+                    return;
+                }
+                coins -= 3;
+                localStorage.setItem('emojiFalCoins', coins.toString());
+                updateCoinsDisplay();
+            }
+
+            // Get random combination
+            const randomCombinationIndex = Math.floor(Math.random() * emojiCombinations.length);
+            const combination = emojiCombinations[randomCombinationIndex];
+            
+            // Animate main button
+            mainButtonText.textContent = combination[0];
+            mainButtonText.classList.add('emoji-bounce');
+            
+            setTimeout(() => {
+                mainButtonText.textContent = combination[1];
+                mainButtonText.classList.remove('emoji-bounce');
+                void mainButtonText.offsetWidth; // Trigger reflow
+                mainButtonText.classList.add('emoji-bounce');
+            }, 300);
+            
+            setTimeout(() => {
+                mainButtonText.textContent = combination[2];
+                mainButtonText.classList.remove('emoji-bounce');
+                void mainButtonText.offsetWidth; // Trigger reflow
+                mainButtonText.classList.add('emoji-bounce');
+            }, 600);
+            
+            // Generate random predictions
+            setTimeout(() => {
+                const loveRandom = Math.floor(Math.random() * predictions.love.length);
+                const healthRandom = Math.floor(Math.random() * predictions.health.length);
+                const wealthRandom = Math.floor(Math.random() * predictions.wealth.length);
+                const mysteryRandom = Math.floor(Math.random() * predictions.mystery.length);
+                
+                lovePrediction.textContent = predictions.love[loveRandom];
+                healthPrediction.textContent = predictions.health[healthRandom];
+                wealthPrediction.textContent = predictions.wealth[wealthRandom];
+                mysteryPrediction.textContent = predictions.mystery[mysteryRandom];
+                
+                // Show cards
+                cardsContainer.classList.remove('opacity-0');
+                cardsContainer.classList.add('opacity-100');
+                
+                // Add to history
+                const currentDate = new Date();
+                const dateStr = currentDate.toLocaleDateString('fa-IR');
+                const timeStr = currentDate.toLocaleTimeString('fa-IR');
+                
+                const fortuneEntry = {
+                    date: `${dateStr} ${timeStr}`,
+                    emojis: combination,
+                    predictions: {
+                        love: predictions.love[loveRandom],
+                        health: predictions.health[healthRandom],
+                        wealth: predictions.wealth[wealthRandom],
+                        mystery: predictions.mystery[mysteryRandom]
+                    }
+                };
+                
+                history.unshift(fortuneEntry);
+                if (history.length > 20) history.pop();
+                
+                localStorage.setItem('emojiFalHistory', JSON.stringify(history));
+                renderHistory();
+                
+                // Create particles
+                createParticles();
+                
+                // Reset animation
+                setTimeout(() => {
+                    mainButtonText.classList.remove('emoji-bounce');
+                }, 900);
+            }, 900);
+        }
+
+        function watchAd() {
+            if (adCoinsToday >= 3) {
+                alert("امروز حداکثر سکه از طریق تبلیغات دریافت کرده‌اید. فردا دوباره امتحان کنید.");
+                return;
+            }
+
+            // Simulate watching an ad
+            coins += 1;
+            adCoinsToday += 1;
+            localStorage.setItem('emojiFalCoins', coins.toString());
+            localStorage.setItem('emojiFalAdCoinsToday', adCoinsToday.toString());
+            updateCoinsDisplay();
+            
+            alert("ممنون از تماشای تبلیغ! یک سکه به حساب شما اضافه شد.");
+        }
+
+        function updateCoinsDisplay() {
+            coinsDisplay.textContent = coins;
+        }
+
+        function toggleTheme() {
+            darkMode = !darkMode;
+            localStorage.setItem('emojiFalDarkMode', darkMode.toString());
+            applyTheme();
+        }
+
+        function applyTheme() {
+            if (darkMode) {
+                document.documentElement.classList.add('dark');
+                themeIcon.textContent = '🌙';
+                document.body.className = 'font-vazir bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 min-h-screen text-white';
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIcon.textContent = '☀️';
+                document.body.className = 'font-vazir bg-gradient-to-br from-rose-200 to-amber-200 min-h-screen text-gray-900';
+            }
+        }
+
+        function showHistory() {
+            cardsContainer.classList.add('opacity-0');
+            historySection.classList.remove('hidden');
+        }
+
+        function showHome() {
+            cardsContainer.classList.remove('opacity-0');
+            historySection.classList.add('hidden');
+        }
+
+        function renderHistory() {
+            historyList.innerHTML = '';
+            
+            if (history.length === 0) {
+                historyList.innerHTML = '<p class="text-center">هیچ فال‌ای در تاریخچه شما وجود ندارد</p>';
+                return;
+            }
+            
+            history.forEach((entry, index) => {
+                const entryElement = document.createElement('div');
+                entryElement.className = 'glassmorphism rounded-2xl p-4 relative overflow-hidden';
+                
+                entryElement.innerHTML = `
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm opacity-80">${entry.date}</span>
+                        <div class="flex space-x-2 space-x-reverse">
+                            ${entry.emojis.map(emoji => `<span>${emoji}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="border-t border-white border-opacity-20 pt-3">
+                        <p class="text-sm"><span class="text-rose-400">عشق:</span> ${entry.predictions.love.substring(0, 30)}...</p>
+                        <p class="text-sm"><span class="text-emerald-400">سلامتی:</span> ${entry.predictions.health.substring(0, 30)}...</p>
+                    </div>
+                `;
+                
+                historyList.appendChild(entryElement);
+            });
+        }
+
+        function createParticles() {
+            const colors = ['#ec4899', '#8b5cf6', '#3b82f6', '#10b981', '#f59e0b'];
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 6 + 2;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.backgroundColor = color;
+                
+                const startX = window.innerWidth / 2;
+                const startY = window.innerHeight / 2 - 100;
+                
+                particle.style.left = `${startX}px`;
+                particle.style.top = `${startY}px`;
+                
+                document.body.appendChild(particle);
+                
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 3 + 2;
+                
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+                
+                let posX = startX;
+                let posY = startY;
+                let opacity = 1;
+                
+                const animate = () => {
+                    posX += vx;
+                    posY += vy;
+                    opacity -= 0.02;
+                    
+                    particle.style.left = `${posX}px`;
+                    particle.style.top = `${posY}px`;
+                    particle.style.opacity = opacity;
+                    
+                    if (opacity > 0) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        particle.remove();
+                    }
+                };
+                
+                requestAnimationFrame(animate);
+            }
+        }
+    </script>
+</body>
+</html>
