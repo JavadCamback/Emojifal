@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -14,6 +15,7 @@
         .fantasy-font {
             font-family: 'Lalezar', cursive;
         }
+    <style>
         @keyframes pulse {
             0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.7); }
             50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(236, 72, 153, 0); }
@@ -126,9 +128,11 @@
             
             <!-- Ad Placeholder -->
             <div class="glassmorphism rounded-2xl p-4 mb-8 text-center bg-gray-800 bg-opacity-50">
-                <p class="mb-2">برای دریافت سکه بیشتر تبلیغات را تماشا کنید</p>
+                <p class="mb-2">برای دریافت سکه بیشتر کلیک کنید
+                    و همچنین روزانه یک  فال رایگان هدیه میگیرید
+                </p>
                 <button id="watch-ad" class="bg-gradient-to-r from-amber-500 to-yellow-500 text-black font-bold px-6 py-2 rounded-full">
-                    تماشای تبلیغ (+1 سکه)
+                    دریافت سکه (+0.5 سکه)
                 </button>
             </div>
         </main>
@@ -151,7 +155,7 @@
                 <!-- Support Section -->
                 <div id="support-section" class="flex flex-col items-center justify-center p-2">
                     <span class="text-xl">💌</span>
-                    <span class="fantasy-font text-xs">پشتیبانی</span>
+                    <span class="fantasy-font text-xs">حمایت</span>
                 </div>
             </div>
         </div>
@@ -169,11 +173,15 @@
         <div id="ads-card" class="fixed bottom-16 left-4 right-4 glassmorphism rounded-2xl p-4 hidden">
             <h3 class="fantasy-font text-lg mb-2 text-center text-amber-400">تبلیغات</h3>
             <div class="bg-gray-800 bg-opacity-50 rounded-xl p-4 mb-3">
-                <p class="text-sm text-center">برای دریافت سکه بیشتر تبلیغات را تماشا کنید</p>
+                <p class="text-sm text-center">برای دریافت سکه بیشتر روی تبلیغات کلیک کنید</p>
             </div>
+            <div id="pos-article-text-108701" class="bg-yellow-100 text-black p-4 rounded-lg"></div>
+            <div id="pos-article-text-108702" class="bg-yellow-200 text-black p-4 rounded-lg"></div>
+            <div id="pos-article-display-108705"></div>
+            <div id="pos-article-text-108704" class="bg-yellow-300 text-black p-4 rounded-lg"></div>
+            <div id="pos-article-display-card-108706"></div>
             <button id="watch-ad" class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-black fantasy-font py-2 rounded-full">
-                تماشای تبلیغ (+1 سکه)
-            </button>
+            روی تبلیغات کلیک کنید</button>
         </div>
     </div>
 
@@ -398,19 +406,19 @@
         }
 
         function watchAd() {
-            if (adCoinsToday >= 1.5) {
+            if (adCoinsToday >= 3) {
                 alert("امروز حداکثر سکه از طریق تبلیغات دریافت کرده‌اید. فردا دوباره امتحان کنید.");
                 return;
             }
 
             // Simulate watching an ad
-            coins += 0.5;
-            adCoinsToday += 0.5;
+            coins += 1;
+            adCoinsToday += 1;
             localStorage.setItem('emojiFalCoins', coins.toString());
             localStorage.setItem('emojiFalAdCoinsToday', adCoinsToday.toString());
             updateCoinsDisplay();
             
-            alert("نیم سکه به حساب شما اضافه شد!");
+            alert("ممنون از تماشای تبلیغ! یک سکه به حساب شما اضافه شد.");
         }
 
         function updateCoinsDisplay() {
