@@ -323,7 +323,7 @@
                     alert("سکه کافی ندارید! برای دریافت سکه بیشتر تبلیغات را تماشا کنید.");
                     return;
                 }
-                coins -= 3;
+                coins -= 0;
                 localStorage.setItem('emojiFalCoins', coins.toString());
                 updateCoinsDisplay();
             }
@@ -405,13 +405,13 @@
             }
 
             // Simulate watching an ad
-            coins += 1;
-            adCoinsToday += 1;
+            coins += 0.5;
+            adCoinsToday += 0.5;
             localStorage.setItem('emojiFalCoins', coins.toString());
             localStorage.setItem('emojiFalAdCoinsToday', adCoinsToday.toString());
             updateCoinsDisplay();
             
-            alert("ممنون از تماشای تبلیغ! یک سکه به حساب شما اضافه شد.");
+            alert("نیم سکه به حساب شما اضافه شد!");
         }
 
         function updateCoinsDisplay() {
